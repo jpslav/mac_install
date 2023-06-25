@@ -19,3 +19,5 @@ alias rmorig='find . -name "*.orig" -delete'
 alias uncommit='git reset --soft HEAD^'
 
 alias xcode='open -a Xcode'
+
+alias codei='/Applications/Visual\ Studio\ Code\ -\ Insiders.app'

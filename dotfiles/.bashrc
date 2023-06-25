@@ -31,6 +31,8 @@
 export CLICOLOR=1
 export LSCOLORS=ExGxCxDxBxegedabagaced
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 ##
 ## Set the prompt to be the output of ~/bin/prompt.pl
 ##
