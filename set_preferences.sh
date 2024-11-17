@@ -92,7 +92,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # defaults write NSGlobalDomain AppleShowAllExtensions -bool false
 
 # Finder: show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool false
 
 # Finder: show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
