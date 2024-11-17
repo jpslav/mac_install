@@ -89,7 +89,6 @@ apps=(
   visual-studio-code
   mimestream
   kdiff3
-  authy
   box-drive
   tripmode
 )
@@ -109,7 +108,7 @@ echo "Installing rbenv..."
 ~/.my_mac/install_ruby.sh
 
 echo "Installing nvm..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 echo "source ~/.my_mac/dotfiles/.bashrc_nvm" >> ~/.bashrc
 
@@ -125,8 +124,8 @@ echo "Setting terminal theme..."
 ~/.my_mac/set_terminal_theme.sh
 
 # Install secrets
-echo "Installing secrets..."
-~/.my_mac/install_secrets.rb
+# echo "Installing secrets..."
+# ~/.my_mac/install_secrets.rb
 
 # Set reminders for other things to do
 reminders=(
