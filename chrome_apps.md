@@ -13,49 +13,80 @@ Copy and paste this at the console prompt, replacing 'example@rice.edu' with you
 ```js
 const email = 'example@rice.edu'
 ````
-
-Then copy and paste the following and hit enter:
+Hit enter.  Then copy and paste the following and hit enter:
 
 ```js
 const startUrl = `https://mail.google.com/mail/u/?authuser=${email}`;
 const name = 'Rice&nbsp;Gmail';
 const description = 'Rice&nbsp;Gmail';
 const logo = 'gmail_rice';
-```
 
-```js
+const unsanitizedHtmlPolicy = trustedTypes.createPolicy('unsanitizedHtml', {
+  createHTML: (htmlString) => htmlString,
+});
+
 document.head
   .querySelector(':first-child')
   .insertAdjacentHTML(
     'beforebegin',
-    `<link rel="manifest" href='data:application/manifest+json,{"start_url":"${startUrl}", "name":"${name}", "description": "${description}", "icons": [{ "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_512.png", "type": "image/png", "sizes": "512x512" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_256.png", "type": "image/png", "sizes": "256x256" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_128.png", "type": "image/png", "sizes": "128x128" }]}' />`,
+    unsanitizedHtmlPolicy.createHTML(
+      `<link rel="manifest" href='data:application/manifest+json,{"start_url":"${startUrl}", "name":"${name}", "description": "${description}", "icons": [{ "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_512.png", "type": "image/png", "sizes": "512x512" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_256.png", "type": "image/png", "sizes": "256x256" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_128.png", "type": "image/png", "sizes": "128x128" }]}' />`,
+    )
   );
 ```
 
-Next, go to the three-dot menu in the upper right corner of Chrome.  Click More Tools | Create Shortcut...
+Next, go to the three-dot menu in the upper right corner of Chrome.  Click "Cast, Save, and Share..." then click "Install Page as App".  
 
-You should see "Rice Gmail" in the dialog box.  Check the "Open in new window" box and hit "Create".
+You should see "Rice Gmail" in the dialog box.  Click OK. 
 
-Your new app will be in your dock (in Mac OS).  Right-click on it, click on "Options", then select "Keep in Dock".
+To make this easy to reuse on Mac: Clicking OK should open a Finder window with you new app. Open it, and verify that it is your Rice Gmail. There should be an icon now for it in the Dock. Right-click on that icon, click on "Options", then select "Keep in Dock" so that it is always in your dock.
 
 # Google Calendar
 
-Ditto the above except start from your Rice Google Calendar and replace the middle block of Javascript with:
+Ditto everything above except start from your Rice Google Calendar and replace the big pasted block of code with the following (again remembering to enter the first `const email = 'your_email@rice.edu'` line):
 
 ```js
 const startUrl = `https://calendar.google.com/calendar/?authuser=${email}`;
 const name = 'Rice&nbsp;Calendar';
 const description = 'Rice&nbsp;Calendar';
 const logo = 'gcal_rice';
+
+const unsanitizedHtmlPolicy = trustedTypes.createPolicy('unsanitizedHtml', {
+  createHTML: (htmlString) => htmlString,
+});
+
+document.head
+  .querySelector(':first-child')
+  .insertAdjacentHTML(
+    'beforebegin',
+    unsanitizedHtmlPolicy.createHTML(
+      `<link rel="manifest" href='data:application/manifest+json,{"start_url":"${startUrl}", "name":"${name}", "description": "${description}", "icons": [{ "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_512.png", "type": "image/png", "sizes": "512x512" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_256.png", "type": "image/png", "sizes": "256x256" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_128.png", "type": "image/png", "sizes": "128x128" }]}' />`,
+    )
+  );
 ```
 
 # Google Drive
 
-Ditto above except middle block of Javascript is:
+Ditto everything above except start from your Rice Google Drive and replace the big pasted block of code with the following (again remembering to enter the first `const email = 'your_email@rice.edu'` line):
 
 ```js
-const startUrl = `https://drive.google.com/drive/u/?authuser=${email}`;
-const name = 'Rice&nbsp;Drive';
-const description = 'Rice&nbsp;Drive';
-const logo = 'drive_rice';
+  const startUrl = `https://drive.google.com/drive/u/?authuser=${email}`;
+  const name = 'Rice&nbsp;Drive';
+  const description = 'Rice&nbsp;Drive';
+  const logo = 'drive_rice';
+
+  const unsanitizedHtmlPolicy = trustedTypes.createPolicy('unsanitizedHtml', {
+    createHTML: (htmlString) => htmlString,
+  });
+
+  document.head
+    .querySelector(':first-child')
+    .insertAdjacentHTML(
+      'beforebegin',
+      unsanitizedHtmlPolicy.createHTML(
+        `<link rel="manifest" href='data:application/manifest+json,{"start_url":"${startUrl}", "name":"${name}", "description": "${description}", "icons": [{ "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_512.png", "type": "image/png", "sizes": "512x512" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_256.png", "type": "image/png", "sizes": "256x256" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_128.png", "type": "image/png", "sizes": "128x128" }]}' />`,
+      )
+    );
 ```
+
+Sometimes right clicking to open the developer tools doesn't work in Drive. You can get to the developer tools via the View menu, then clicking Developer, then clicking Developer Tools.
